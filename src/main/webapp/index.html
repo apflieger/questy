@@ -1,1 +1,21 @@
-OUIZENCOIZNEFgg
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+</head>
+<body>
+  <form class="new-q">
+    <fieldset>
+      <input type="text" class="form-control" placeholder="Enter a title that no one else will see">
+      <textarea class="form-control" rows="5"></textarea>
+    </fieldset>
+    <fieldset>
+      <div class="">
+        <label>Name:</label> <input class="form-control" type="text" ng-model="yourName" placeholder="Enter a name here">
+      </div>
+      <h1>Hello {{yourName}}!</h1>
+    </fieldset>
+  </form>
+</body>
+</html>
