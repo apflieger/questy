@@ -3,19 +3,25 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-  <form class="new-q">
-    <fieldset>
-      <input type="text" class="form-control" placeholder="Enter a title that no one else will see">
-      <textarea class="form-control" rows="5"></textarea>
-    </fieldset>
-    <fieldset>
-      <div class="">
-        <label>Name:</label> <input class="form-control" type="text" ng-model="yourName" placeholder="Enter a name here">
-      </div>
-      <h1>Hello {{yourName}}!</h1>
-    </fieldset>
-  </form>
+  <header class="page-header">
+    <h1 class="container col-md-12">Questy</h1>
+  </header>
+  <div class="container">
+    <form class="col-md-8">
+      <fieldset class="form-group">
+        <div class="input-group form-group">
+          <span class="input-group-addon">Q</span> <input type="text" class="form-control" placeholder="Enter a title that no one else will see">
+        </div>
+        <textarea class="form-control form-group" rows="5"></textarea>
+      </fieldset>
+      <fieldset class="form-group">
+          <label>Name:</label> <input class="form-control" type="text" ng-model="yourName" placeholder="Enter a name here">
+        <h1>Hello {{yourName}}!</h1>
+      </fieldset>
+    </form>
+  </div>
 </body>
 </html>
