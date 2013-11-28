@@ -11,6 +11,7 @@ questy.config([ '$routeProvider', function($routeProvider) {
 
 } ]);
 
+
 questy.service('loginService', function($http, $location, $cookieStore) {
 	var login = function(user) {
 		$http.post('login', user).success(function(res) {
@@ -42,8 +43,8 @@ questy.service('loginService', function($http, $location, $cookieStore) {
 questy.controller('QForm', function($scope, $http) {
 	$scope.submit = function() {
 		$http.post('/login', {
-			username : 'apf',
-			password : 'apf'
+			'username' : 'apf',
+			'password' : 'apf'
 		}).success(function(data, status, headers, config) {
 			alert(data);
 		});
