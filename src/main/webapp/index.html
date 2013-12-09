@@ -16,12 +16,13 @@
   <header class="page-header row">
     <div class="container">
       <div class="col-md-4">
-        <h1>Questy</h1>
+        <h1><a href="#/qform">Questy</a></h1>
       </div>
       <div class="col-md-4 col-md-offset-4">
       {{isLoggedIn}}
         <a ng-hide="isLoggedIn" href="#/login">Login</a>
         <span ng-show="isLoggedIn">{{username}}</span>
+        <a ng-show="isLoggedIn" ng-click="logout()">Logout</a>
       </div>
     </div>
   </header>

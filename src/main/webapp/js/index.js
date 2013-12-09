@@ -21,30 +21,52 @@ questy.service('loginService', function($http, $location, $cookieStore,
 
 	// the user is stuck at '/login' until they are logged in
 	$rootScope.$on('$routeChangeStart', function(event, next, current) {
-		if (!isLoggedIn && next.redirectTo !== '/login' && next.originalPath !== '/login') {
+		if (!isLoggedIn && next.redirectTo !== '/login'
+				&& next.originalPath !== '/login') {
 			$location.path('/login');
 		}
 	});
+
+	var login = function(username, password, callback) {
+		if (username && password) {
+			$http.post('/login', {
+				username : username,
+				password : password
+			}).success(function(data, status, headers, config) {
+				isLoggedIn = data.known;
+				callback(data.known);
+			});
+		}
+		return isLoggedIn;
+	};
+
+	var logout = function() {
+		isLoggedIn = false;
+		$location.path('/login');
+	};
 	return {
-		isLoggedIn : isLoggedIn
+		login : login,
+		logout : logout
 	};
 });
 
-questy.controller('LoginController', function($scope, $http, $rootScope,
-		$location, loginService) {
+questy.controller('LoginController', function($scope, $location, loginService) {
 	$scope.username = 'apf';
 	$scope.password = 'apf';
 	$scope.isLoggedIn = false;
 	$scope.login = function() {
-		$http.post('/login', {
-			username : 'apf',
-			password : 'apf'
-		}).success(function(data, status, headers, config) {
-			$scope.isLoggedIn = data.known;
-			loginService.isLoggedIn = data.known;
-			$location.path('/qform');
+		loginService.login('apf', 'apf', function(login) {
+			$scope.isLoggedIn = login;
+			if (login)
+				$location.path('/qform');
 		});
 	};
+
+	$scope.logout = function() {
+		loginService.logout();
+		$scope.isLoggedIn = false;
+	};
+
 });
 
 questy.controller('QForm', function($scope, $http) {
