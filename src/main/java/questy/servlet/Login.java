@@ -25,8 +25,10 @@ public class Login extends HttpServlet {
 		boolean isKnown = "apf".equals(userName) && "apf".equals(password);
 
 		JSONWriter out = new JSONWriter(resp.getWriter());
-		out.array();
+		out.object();
+		out.key("known");
 		out.value(isKnown);
-		out.endArray();
+		out.endObject();
+
 	}
 }
