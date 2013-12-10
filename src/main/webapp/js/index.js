@@ -51,15 +51,18 @@ questy.service('loginService', function($http, $location, $cookieStore,
 });
 
 questy.controller('LoginController', function($scope, $location, loginService) {
-	$scope.username = 'apf';
-	$scope.password = 'apf';
-	$scope.isLoggedIn = false;
+	$scope.user = {
+		username : null,
+		password : null,
+		isLoggedIn : false
+	};
 	$scope.login = function() {
-		loginService.login('apf', 'apf', function(login) {
-			$scope.isLoggedIn = login;
-			if (login)
-				$location.path('/qform');
-		});
+		loginService.login($scope.user.username, $scope.user.password,
+				function(login) {
+					$scope.user.isLoggedIn = login;
+					if (login)
+						$location.path('/qform');
+				});
 	};
 
 	$scope.logout = function() {
