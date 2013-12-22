@@ -1,13 +1,31 @@
-<div class="row">
-  <form class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 ">
-    <div class="form-group">
-      <label for="Username">Username</label> <input class="form-control" type="text" id="Username" ng-model="user.username"/>
+<!DOCTYPE html>
+<html ng-app="questy">
+<head>
+<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+  <header class="page-header row">
+    <div class="container">
+      <div class="col-md-4">
+        <h1>Questy</h1>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="Password">Password</label> <input class="form-control" type="password" id="Password" ng-model="user.password"/>
+  </header>
+  <div class="container">
+    <div class="row">
+      <form class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4" action="login" method="post">
+        <div class="form-group">
+          <label>Username</label> <input class="form-control" type="text" name="login" />
+        </div>
+        <div class="form-group">
+          <label>Password</label> <input class="form-control" type="password" name="password" />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">Login</button>
+        </div>
+      </form>
     </div>
-    <div class="form-group">
-      <button type="submit" ng-click="login()" class="btn btn-default">Login</button>
-    </div>
-  </form>
-</div>
+  </div>
+</body>
+</html>
