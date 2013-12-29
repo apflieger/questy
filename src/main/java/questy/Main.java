@@ -4,7 +4,7 @@ import java.io.File;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
-import org.apache.naming.resources.VirtualDirContext;
+import org.apache.tomcat.util.scan.StandardJarScanner;
 
 public class Main {
 
@@ -21,13 +21,11 @@ public class Main {
 		}
 
 		tomcat.setPort(Integer.valueOf(webPort));
-		Context ctx = tomcat.addWebapp("/", new File("src/main/webapp/").getAbsolutePath());
-		
-		//declare an alternate location for your "WEB-INF/classes" dir:     
-		File additionWebInfClasses = new File("target/classes");
-		VirtualDirContext resources = new VirtualDirContext();
-		resources.setExtraResourcePaths("/WEB-INF/classes=" + additionWebInfClasses);
-		ctx.setResources(resources);
+		Context ctx = tomcat.addWebapp("/",
+				new File("src/main/webapp/").getAbsolutePath());
+
+		StandardJarScanner scan = (StandardJarScanner) ctx.getJarScanner();
+		scan.setScanAllDirectories(true);
 
 		tomcat.start();
 		tomcat.getServer().await();
