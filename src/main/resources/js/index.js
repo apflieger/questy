@@ -1,6 +1,6 @@
 var questy = angular.module('questy', [ 'ngRoute', 'ngCookies' ]);
 
-questy.config([ '$routeProvider', function($routeProvider, loginService) {
+questy.config([ '$routeProvider', function($routeProvider) {
 
 	return $routeProvider.when('/qform', {
 		templateUrl : 'views/qform.html'
@@ -10,8 +10,7 @@ questy.config([ '$routeProvider', function($routeProvider, loginService) {
 
 } ]);
 
-questy.service('loginService', function($http, $location, $cookieStore,
-		$rootScope) {
+questy.service('loginService', function($location, $cookieStore, $rootScope, $cookies) {
 
 	// the user is stuck at '/login' until they are logged in
 	$rootScope.$on('$routeChangeStart', function(event, next, current) {
@@ -22,8 +21,8 @@ questy.service('loginService', function($http, $location, $cookieStore,
 	});
 
 	var isLoggedIn = function() {
-
-	}
+		return $cookies.JSESSIONID;
+	};
 
 	var logout = function() {
 
@@ -35,16 +34,8 @@ questy.service('loginService', function($http, $location, $cookieStore,
 	};
 });
 
-questy.controller('LoginController', function($scope, $location, loginService) {
-	$scope.logout = function() {
-		loginService.logout();
-		$scope.isLoggedIn = false;
-	};
-
-});
-
-questy.controller('QForm', function($scope, $http) {
+questy.controller('QForm', function($scope, loginService) {
 	$scope.submit = function() {
-
+		alert(loginService.isLoggedIn());
 	};
 });

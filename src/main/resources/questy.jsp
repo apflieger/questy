@@ -16,10 +16,15 @@
   <header class="page-header row">
     <div class="container">
       <div class="col-md-4">
-        <h1><a href="#/qform">Questy</a></h1>
+        <h1>
+          <a href="#/qform">Questy</a>
+        </h1>
       </div>
     </div>
   </header>
   <div class="container" ng-view></div>
+  <% 
+System.out.println( "Evaluating date now" ); 
+%>
 </body>
 </html>
