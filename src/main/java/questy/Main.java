@@ -2,13 +2,14 @@ package questy;
 
 import java.io.File;
 
+import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
+import org.apache.naming.resources.VirtualDirContext;
 
 public class Main {
 
 	public static void main(String[] args) throws Exception {
 
-		String webappDirLocation = "src/main/webapp/";
 		Tomcat tomcat = new Tomcat();
 
 		// The port that we should run on can be set into an environment
@@ -20,7 +21,13 @@ public class Main {
 		}
 
 		tomcat.setPort(Integer.valueOf(webPort));
-		tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
+		Context ctx = tomcat.addWebapp("/", new File("src/main/webapp/").getAbsolutePath());
+		
+		//declare an alternate location for your "WEB-INF/classes" dir:     
+		File additionWebInfClasses = new File("target/classes");
+		VirtualDirContext resources = new VirtualDirContext();
+		resources.setExtraResourcePaths("/WEB-INF/classes=" + additionWebInfClasses);
+		ctx.setResources(resources);
 
 		tomcat.start();
 		tomcat.getServer().await();

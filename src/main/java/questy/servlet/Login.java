@@ -23,7 +23,6 @@ public class Login extends HttpServlet {
 			HttpSession session = req.getSession();
 			session.setAttribute("login", username);
 			resp.sendRedirect("/questy.html");
-			resp.setStatus(HttpServletResponse.SC_OK);
 		}
 
 	}
