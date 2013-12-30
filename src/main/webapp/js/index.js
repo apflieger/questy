@@ -13,24 +13,11 @@ questy.config([ '$routeProvider', function($routeProvider, loginService) {
 questy.service('loginService', function($http, $location, $cookieStore,
 		$rootScope) {
 
-	// the user is stuck at '/login' until they are logged in
-	$rootScope.$on('$routeChangeStart', function(event, next, current) {
-		if (!isLoggedIn && next.redirectTo !== '/login'
-				&& next.originalPath !== '/login') {
-			// redirect login page
-		}
-	});
-
-	var isLoggedIn = function() {
-
-	}
-
 	var logout = function() {
-
+		
 	};
 
 	return {
-		isLoggedIn : isLoggedIn,
 		logout : logout
 	};
 });

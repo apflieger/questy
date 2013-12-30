@@ -18,6 +18,9 @@
       <div class="col-md-4">
         <h1><a href="#/qform">Questy</a></h1>
       </div>
+      <div class="col-span-md-4 col-md-4">
+      <%= "lol" %>
+      </div>
     </div>
   </header>
   <div class="container" ng-view></div>
