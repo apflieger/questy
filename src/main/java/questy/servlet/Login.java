@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "Login", urlPatterns = { "/login" })
+@WebServlet(name = "Login", urlPatterns = "/login")
 public class Login extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -27,7 +27,7 @@ public class Login extends HttpServlet {
 		if (isKnown) {
 			HttpSession session = req.getSession();
 			session.setAttribute("login", username);
-			resp.sendRedirect("/questy.jsp");
+			resp.sendRedirect("/app");
 		}
 
 	}
