@@ -8,6 +8,14 @@ import org.apache.tomcat.util.scan.StandardJarScanner;
 
 public class Main {
 
+	/**
+	 * Pour le lancer en debug dans eclipse, il faut s'assurer que le path du
+	 * projet est bien setupé <br>
+	 * JRE, maven, src ...
+	 * 
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 
 		Tomcat tomcat = new Tomcat();
