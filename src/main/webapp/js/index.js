@@ -1,6 +1,6 @@
 var questy = angular.module('questy', [ 'ngRoute', 'ngCookies' ]);
 
-questy.config([ '$routeProvider', function($routeProvider, loginService) {
+questy.config([ '$routeProvider', function($routeProvider) {
 
 	return $routeProvider.when('/qform', {
 		templateUrl : 'views/qform.html'
@@ -10,29 +10,16 @@ questy.config([ '$routeProvider', function($routeProvider, loginService) {
 
 } ]);
 
-questy.service('loginService', function($http, $location, $cookieStore,
-		$rootScope) {
-
-	var logout = function() {
-		
-	};
-
+questy.service('loginService', function() {
 	return {
-		logout : logout
+		user : args
 	};
 });
 
 questy.controller('LoginController', function($scope, $location, loginService) {
-	$scope.logout = function() {
-		loginService.logout();
-		$scope.isLoggedIn = false;
-	};
-
+	$scope.user = loginService.user;
 });
 
 questy.controller('QForm', function($scope, $http) {
-	$scope.user = args;
-	$scope.submit = function() {
-		
-	};
+
 });
