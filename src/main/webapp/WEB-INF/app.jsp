@@ -11,6 +11,11 @@
 <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/index.css">
+
+<title>Questy - QForm</title>
+<script>
+var args = "<%= session.getAttribute("login") %>";
+</script>
 </head>
 <body>
   <header class="page-header row">
@@ -19,7 +24,6 @@
         <h1><a href="#/qform">Questy</a></h1>
       </div>
       <div class="col-span-md-4 col-md-4">
-      <%= "lol" %>
       </div>
     </div>
   </header>

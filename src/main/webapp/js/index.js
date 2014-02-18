@@ -31,7 +31,8 @@ questy.controller('LoginController', function($scope, $location, loginService) {
 });
 
 questy.controller('QForm', function($scope, $http) {
+	$scope.user = args;
 	$scope.submit = function() {
-
+		
 	};
 });
